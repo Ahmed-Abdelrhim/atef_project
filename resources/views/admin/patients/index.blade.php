@@ -39,8 +39,8 @@
                         name: 'name',
                     },
                     {
-                        data: 'phone',
-                        name: 'phone',
+                        data: 'phone_number',
+                        name: 'phone_number',
                     },
                     {
                         data: 'address',

@@ -8,7 +8,10 @@ let height = document.documentElement.scrollHeight - document.documentElement.cl
 window.addEventListener('scroll',() => {
 
     let scrollTop = document.documentElement.scrollTop;
-    // scroller.style.width = `${(scrollTop / height) * 100} `;
-    scroller.style.width = `${document.documentElement.scrollTop* 3.6 + 'px'} `;
-    console.log('ahmed');
+    let width = (scrollTop / height) * (100);
+    // scroller.style.width = `${ (scrollTop / height) } * 100 `+ '%'  ;
+    scroller.style.width =  width+'%' ;
+    // scroller.style.width = `${document.documentElement.scrollTop* 3.6 + 'px'} `;
+    console.log('scrollTop / height  => '+(scrollTop / height) * 100 );
+    console.log('clientHeight => '+document.documentElement.clientHeight);
 });
