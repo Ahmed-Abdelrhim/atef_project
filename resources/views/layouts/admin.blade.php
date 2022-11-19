@@ -85,27 +85,37 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
-                    {{--                    <li class="nav-item dropdown">--}}
-                    {{--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"--}}
-                    {{--                           aria-expanded="false">--}}
-                    {{--                             {{ Auth::guard('author')->user()->name }}--}}
-                    {{--                        </a>--}}
-                    {{--                        <div class="dropdown-menu">--}}
-                    {{--                              <a class="dropdown-item" href="{{ route('profile') }}">--}}
-                    {{--                                Profile--}}
-                    {{--                             </a>--}}
+                    @auth('admin')
 
-                    {{--                            <a class="dropdown-item" href="#" onclick="event.preventDefault();--}}
-                    {{--                                    document.getElementById('logout-form').submit();">--}}
-                    {{--                                Logout--}}
-                    {{--                            </a>--}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.add.patient')}}">add patient</a>
+                        </li>
 
-                    {{--                            <form id="logout-form" action="#" method="POST" class="d-none">--}}
-                    {{--                                @csrf--}}
-                    {{--                            </form>--}}
 
-                    {{--                        </div>--}}
-                    {{--                    </li>--}}
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                               aria-expanded="false">
+                                {{ Auth::guard('admin')->user()->name }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                    Profile
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('admin.logout')}}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{route('admin.logout')}}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+
+                            </div>
+                        </li>
+                    @endauth
 
                 </ul>
             </div>

@@ -5,9 +5,9 @@
             <div class="col-md-8">
                 <div class="card">
                     Admin {{Auth::guard('admin')->user()->name}}
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

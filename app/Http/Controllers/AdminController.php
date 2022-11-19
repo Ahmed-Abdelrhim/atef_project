@@ -25,18 +25,17 @@ class AdminController extends Controller
             return redirect('admin/login')->withErrors($validator)->withInput();
 
         if (Auth::guard('admin')->attempt($this->credentials($request))) {
-            return view('admin.admin-home');
-        }
-        //return $request;
 
-        $email = Admin::query()->where('email',$request->get('email'))->first();
+            return view('admin.dashboard');
+        }
+
+        $email = Admin::query()->where('email', $request->get('email'))->first();
         // return $email;
         if ($email) {
-            // return 'email exists';
-            session()->flash('email','Password Is Incorrect!');
+            session()->flash('email', 'Password Is Incorrect!');
             return redirect()->back();
         }
-        session()->flash('email','Admin Doesnt Exist.');
+        session()->flash('email', 'Admin Doesnt Exist.');
         return redirect()->back();
 
     }
@@ -55,7 +54,17 @@ class AdminController extends Controller
     {
         $user = Auth::guard('admin')->user();
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('admin.login.form');
+    }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+
+    public function profile()
+    {
+
     }
 
 

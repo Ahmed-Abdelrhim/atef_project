@@ -33,6 +33,15 @@ Route::group(['middleware' => 'guest:admin'], function () {
 
 Route::group(['middleware' => 'auth:admin'],function() {
 
+    Route::post('admin-logout',[AdminController::class,'logout'])->name('admin.logout');
+    Route::group(['prefix' => 'admin'] , function() {
+        Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+        Route::get('profile',[AdminController::class,'profile'])->name('profile');
+        Route::get('admin-add-patient',[AdminController::class,'profile'])->name('admin.add.patient');
+    });
 
 });
 
+Route::get('hash',function (){
+    return bcrypt('12345678');
+});

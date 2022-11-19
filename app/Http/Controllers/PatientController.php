@@ -9,7 +9,7 @@ class PatientController extends Controller
 {
     public function patientProfileForm()
     {
-        return 'No Blade To View';
+        return view('patient.profile');
     }
 
     public function logout()
