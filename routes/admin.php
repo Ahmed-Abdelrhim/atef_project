@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'guest:admin'], function () {
     Route::get('admin/login',[AdminController::class,'showLoginForm'])->name('admin.login.form');
-    Route::post('admin/login',[AdminController::class,'showLoginForm'])->name('admin.login');
+    Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
 
 });
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,8 @@ Route::group(['middleware' => 'auth:web'],function() {
         Route::get('home', function () {
         return view('patient.patient-home');
     })->name('home');
+
+        Route::get('patient-profile',[PatientController::class,'patientProfileForm'])->name('patient.profile');
 
 
 });
