@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth:web'],function() {
         return view('patient.patient-home');
     })->name('home');
 
+        Route::post('logout/patient',[PatientController::class,'logout'])->name('logout');
+
         Route::get('patient-profile',[PatientController::class,'patientProfileForm'])->name('patient.profile');
 
 
