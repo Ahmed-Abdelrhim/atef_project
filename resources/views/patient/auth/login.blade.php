@@ -6,7 +6,6 @@
 <section class="home" id="home">
 
     <div class="image">
-        <img src="image/home-img.svg" alt="">
         <img src="{{asset('storage/image/home-img.svg')}}" alt=""/>
     </div>
 
@@ -49,6 +48,8 @@
                             </a>
                         @endif
             </form>
+
+<a href="" class="btn">Register <span class="fas fa-chevron-right"></span></a>
     </div>
 
 </section>

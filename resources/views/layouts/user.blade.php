@@ -68,14 +68,10 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
 
-    <a href="#" class="logo navbar-brand"> <i class="fas fa-heartbeat"></i> healthy. </a>
+            <a href="#" class="logo navbar-brand"> <i class="fas fa-heartbeat"></i> healthy. </a>
 
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
@@ -111,10 +107,11 @@
                     @endauth
 
                 </ul>
-                    <div class="box">
+
+            </div>
+            <div class="box">
                         <div id="toggle-btn" class="fas fa-sun"></div>
                     </div>
-            </div>
         </div>
     </nav>
 
