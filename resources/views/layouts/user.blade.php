@@ -17,6 +17,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
     @livewireStyles
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,13 +46,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css"/>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Nunito', 'Cairo', sans-serif;
-        }
 
         .scroller {
             background-color: #0075ff;
@@ -63,12 +62,14 @@
     @stack('styles')
 </head>
 <body>
+
+
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                Hospital
-            </a>
+
+    <a href="#" class="logo navbar-brand"> <i class="fas fa-heartbeat"></i> healthy. </a>
+
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -110,6 +111,9 @@
                     @endauth
 
                 </ul>
+                    <div class="box">
+                        <div id="toggle-btn" class="fas fa-sun"></div>
+                    </div>
             </div>
         </div>
     </nav>
@@ -134,7 +138,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
 <script src="{{asset('js/scrollar.js')}}"></script>
-
+<script src="{{asset('js/script.js')}}"></script>
 
 @stack('scripts')
 </body>
