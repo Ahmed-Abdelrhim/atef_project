@@ -64,6 +64,7 @@
 </head>
 <body>
 <div id="app">
+    <div class="scroller"></div>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -90,6 +91,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.add.patient')}}">add patient</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('all.patients')}}">add patient</a>
+                        </li>
+
 
 
 

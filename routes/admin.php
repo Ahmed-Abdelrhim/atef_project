@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminControlCenterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomLoginController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,12 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
         Route::get('profile',[AdminController::class,'profile'])->name('profile');
         Route::get('admin-add-patient',[AdminController::class,'addPatient'])->name('admin.add.patient');
+
+
+
+        Route::get('all-patients-to-view',[AdminControlCenterController::class,'allPatients'])->name('all.patients');
+        Route::get('all-patients-to-view',[AdminControlCenterController::class,'viewAllPatients'])->name('admin.view.all.patients');
+
     });
 
 });
