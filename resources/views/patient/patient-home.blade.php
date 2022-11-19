@@ -314,7 +314,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="{{asset('storage/image/blog-1.jpg')}}" alt=""/>
+                <img src="{{asset('storage/image/blog-2.jpg')}}" alt=""/>
             </div>
             <div class="content">
                 <div class="icon">
@@ -329,7 +329,7 @@
 
         <div class="box">
             <div class="image">
-                <img src="{{asset('storage/image/blog-1.jpg')}}" alt=""/>
+                <img src="{{asset('storage/image/blog-3.jpg')}}" alt=""/>
             </div>
             <div class="content">
                 <div class="icon">
