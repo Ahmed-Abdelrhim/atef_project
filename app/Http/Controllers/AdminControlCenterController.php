@@ -10,16 +10,12 @@ class AdminControlCenterController extends Controller
 {
     public function allPatients()
     {
-        return view('admin.index');
+        return view('admin.patients.index');
     }
 
     public function viewAllPatients()
     {
-        $patients = User::query()->get();
-
-        // return $posts = BlogPost::with('author')->all();
-        //return  DataTables::of($posts)->addIndexColumn()->make(true);
-
+        $patients = User::get();
         return DataTables::of($patients)->addIndexColumn()
             ->setRowClass(function ($row) {
                 return $row->id % 2 == 0 ? 'alert-primary' : 'alert-warning' . $row->id;
@@ -30,14 +26,21 @@ class AdminControlCenterController extends Controller
             })
             ->addColumn('action', function ($row) {
                 return $btn = '
-                <a href="' . Route('update.post', $row->id) . '" class="btn btn-primary">Update</a>
-                <a href="' . Route('delete.post', $row->id) . '" class="btn btn-danger mt-2">Delete</a>
+                <a href="' . Route('admin.update.patient', $row->id) . '" class="btn btn-primary">Update</a>
+                <a href="' . Route('admin.delete.patient', $row->id) . '" class="btn btn-danger mt-2">Delete</a>
                 ';
-            })
-            ->editColumn('created_at' , function(User $post) {
-                return $post->created_at->diffForHumans();
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+
+    public function updatePatient()
+    {
+
+    }
+
+    public function deletePatient()
+    {
+
     }
 }

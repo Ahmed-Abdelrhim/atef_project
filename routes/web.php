@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminControlCenterController;
 use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;

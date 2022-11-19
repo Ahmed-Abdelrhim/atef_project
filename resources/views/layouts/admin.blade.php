@@ -93,7 +93,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('all.patients')}}">add patient</a>
+                            <a class="nav-link" href="{{route('all.patients')}}">all patient</a>
                         </li>
 
 

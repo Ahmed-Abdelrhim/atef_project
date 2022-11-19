@@ -43,7 +43,11 @@ Route::group(['middleware' => 'auth:admin'],function() {
 
 
         Route::get('all-patients-to-view',[AdminControlCenterController::class,'allPatients'])->name('all.patients');
-        Route::get('all-patients-to-view',[AdminControlCenterController::class,'viewAllPatients'])->name('admin.view.all.patients');
+        Route::get('all-patients-to-view-admins',[AdminControlCenterController::class,'viewAllPatients'])->name('admin.view.all.patients');
+
+
+        Route::get('admin-update-patient',[AdminControlCenterController::class,'updatePatient'])->name('admin.update.patient');
+        Route::get('admin-delete-patient',[AdminControlCenterController::class,'deletePatient'])->name('admin.delete.patient');
 
     });
 
