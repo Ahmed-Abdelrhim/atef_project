@@ -64,7 +64,12 @@ class AdminController extends Controller
 
     public function profile()
     {
+        return view('admin.profile');
+    }
 
+    public function addPatient()
+    {
+        return view('admin.patients.add');
     }
 
 

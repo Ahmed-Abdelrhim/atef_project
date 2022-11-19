@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth:admin'],function() {
     Route::group(['prefix' => 'admin'] , function() {
         Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
         Route::get('profile',[AdminController::class,'profile'])->name('profile');
-        Route::get('admin-add-patient',[AdminController::class,'profile'])->name('admin.add.patient');
+        Route::get('admin-add-patient',[AdminController::class,'addPatient'])->name('admin.add.patient');
     });
 
 });
