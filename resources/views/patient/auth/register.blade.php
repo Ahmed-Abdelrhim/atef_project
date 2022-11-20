@@ -70,6 +70,51 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form- label text-md-right">PSA</label>
+                            <div class="col-md-6">
+                                <input type="file" class="box form-control" name="" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form- label text-md-right">age</label>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="your age" class="box">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form- label text-md-right">gender</label>
+                            <div class="col-md-6">
+                                <select class="box" name="">
+                                        <option value="1">male</option>
+                                        <option value="2">famale</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form- label text-md-right">doctor</label>
+                            <div class="col-md-6">
+                                <select class="box" name="">
+                                    <option value="1"> D/ Mohmed Atef</option>
+                                    <option value="2"> D/ Anas Rabea</option>
+                                    <option value="3"> D/ Mohmed Atef</option>
+                                    <option value="4"> D/ Anas Rabea</option>
+                                    <option value="5"> D/ Mohmed Atef</option>
+                                    <option value="6"> D/ Anas Rabea</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form- label text-md-right">medical history</label>
+                            <div class="col-md-6">
+                                <input type="text area" placeholder="enter hereditary medical history" class="box">
+                            </div>
+                        </div>
+
 
                         <button type="submit" class="btn">Register <span class="fas fa-chevron-right"></span></button>
 
