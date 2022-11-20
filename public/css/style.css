@@ -661,6 +661,7 @@ form .btn{
 
 .img img{
     width: 80px;
+    border-radius: 50%;
 }
 
 .img .name {
