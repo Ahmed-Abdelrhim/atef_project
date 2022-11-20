@@ -28,6 +28,7 @@ class User extends Authenticatable
         'age',
         'psa',
         'medical_history',
+        'doctor_id',
     ];
 
     /**
@@ -49,4 +50,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+
 }

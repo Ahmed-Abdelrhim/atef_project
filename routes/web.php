@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //Auth::routes();
 
@@ -33,19 +30,20 @@ Route::group(['middleware' => 'guest:web'], function () {
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [CustomLoginController::class, 'login'])->name('loginIn');
 
-
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
 });
 
-Route::group(['middleware' => 'auth:web'],function() {
-        Route::get('home', function () {
+Route::group(['middleware' => 'auth:web'], function () {
+    Route::get('home', function () {
         return view('patient.patient-home');
     })->name('home');
 
-        Route::post('logout/patient',[PatientController::class,'logout'])->name('logout');
+    Route::post('logout/patient', [PatientController::class, 'logout'])->name('logout');
 
-        Route::get('patient-profile',[PatientController::class,'patientProfileForm'])->name('patient.profile');
-
+    Route::get('patient-profile', [PatientController::class, 'patientProfileForm'])->name('patient.profile');
 
 });
 
