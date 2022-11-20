@@ -27,8 +27,8 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'guest:web'], function () {
-    Route::get('register/patient', [CustomLoginController::class, 'showRegisterForm'])->name('register.form');
-    Route::post('register', [CustomLoginController::class, 'registerPatient'])->name('register');
+    Route::get('register', [CustomLoginController::class, 'showRegisterForm'])->name('register');
+    Route::post('register/patient', [CustomLoginController::class, 'registerPatient'])->name('register.submit');
 
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [CustomLoginController::class, 'login'])->name('loginIn');

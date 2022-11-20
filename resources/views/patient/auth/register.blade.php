@@ -11,7 +11,7 @@
 
     <div class="content">
         <h3>stay safe, stay healthy</h3>
-            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('register.submit') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form- label text-md-right">{{ __('Name') }}</label>
