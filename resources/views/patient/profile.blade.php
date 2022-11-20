@@ -79,6 +79,7 @@
                 <a href="#" class="btn"> update profile <span class="fas fa-chevron-right"></span> </a>
             </div>
 
+
             {{--        @livewire('patient-profile')--}}
 
 
