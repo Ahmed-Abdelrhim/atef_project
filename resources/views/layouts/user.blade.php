@@ -62,13 +62,13 @@
     @stack('styles')
 </head>
 <body>
-{{--@if(Auth::check())--}}
-{{--    @if(Auth::user()->image != null )--}}
-{{--        <img src="{{asset('storage/patients/'.Auth::user()->image)}}" alt="not-found"/>--}}
-{{--    @else--}}
-{{--        <img src="{{asset('storage/patients/alt.webp') }}" alt="not-found"/>--}}
-{{--    @endif--}}
-{{--@endif--}}
+@if(Auth::check())
+    @if(Auth::user()->image != null )
+        <img src="{{asset('storage/patients/'.Auth::user()->image)}}" alt="not-found"/>
+    @else
+        <img src="{{asset('storage/patients/alt.webp') }}" alt="not-found"/>
+    @endif
+@endif
 
 <div class="scroller"></div>
 <div id="app">

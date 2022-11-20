@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,14 @@ class PatientController extends Controller
 {
     public function patientProfileForm()
     {
-        return view('patient.profile');
+        $doctor = null;
+        if (Auth::user()->doctor_id != null)
+        {
+            $doctor_id = Auth::user()->doctor_id;
+            $doctor = Admin::query()->where('id',$doctor_id)->first();
+        }
+
+        return view('patient.profile',['doctor' => $doctor]);
     }
 
     public function logout()
