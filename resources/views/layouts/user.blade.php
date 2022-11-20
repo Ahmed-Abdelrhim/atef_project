@@ -62,16 +62,20 @@
     @stack('styles')
 </head>
 <body>
+{{--@if(Auth::check())--}}
+{{--    @if(Auth::user()->image != null )--}}
+{{--        <img src="{{asset('storage/patients/'.Auth::user()->image)}}" alt="not-found"/>--}}
+{{--    @else--}}
+{{--        <img src="{{asset('storage/patients/alt.webp') }}" alt="not-found"/>--}}
+{{--    @endif--}}
+{{--@endif--}}
 
 <div class="scroller"></div>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
 
-            <a href="#" class="logo navbar-brand"> <i class="fas fa-heartbeat"></i> healthy. </a>
-
-
-
+            <a href="{{route('home')}}" class="logo navbar-brand"> <i class="fas fa-heartbeat"></i> healthy. </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
@@ -110,8 +114,8 @@
 
             </div>
             <div class="box">
-                        <div id="toggle-btn" class="fas fa-sun"></div>
-                    </div>
+                <div id="toggle-btn" class="fas fa-sun"></div>
+            </div>
         </div>
     </nav>
 
