@@ -581,12 +581,6 @@ form .btn{
 
 
 
-
-
-
-
-
-
 /* media queries  */
 @media (max-width:991px){
 
@@ -683,4 +677,8 @@ form .btn{
 
 .content h2 span {
     color:var(--green);
+}
+
+.psa-img {
+    width: 250px;
 }

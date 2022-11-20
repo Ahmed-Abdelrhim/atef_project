@@ -70,7 +70,7 @@
                 <h2>PSA :
                     <span class="">
                         @if(Auth::user()->psa !=null)
-                            <img src="{{asset('storage/psa/'.Auth::user()->psa)}}" alt="not-found"/>
+                            <img class="psa-img" src="{{asset('storage/psa/'.Auth::user()->psa)}}" alt="not-found"/>
                         @else
                             No PSA Yet
                         @endif
