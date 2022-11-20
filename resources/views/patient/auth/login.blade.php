@@ -49,7 +49,7 @@
                         @endif
             </form>
 
-<a href="#" class="btn">Register <span class="fas fa-chevron-right"></span></a>
+            <a href="{{ route('register') }}" class="btn">Register <span class="fas fa-chevron-right"></span></a>
     </div>
 
 </section>
