@@ -24,6 +24,10 @@ class User extends Authenticatable
         'image',
         'phone_number',
         'address',
+        'gender',
+        'age',
+        'psa',
+        'medical_history',
     ];
 
     /**
