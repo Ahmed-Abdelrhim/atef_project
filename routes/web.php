@@ -49,3 +49,6 @@ Route::group(['middleware' => 'auth:web'],function() {
 
 });
 
+// git config --global user.name "Ahmed-Abdelrhim"
+// git config --global user.email "aabdelrhim974@gmail.com"
+// git config --global user.password "saso03121011"
