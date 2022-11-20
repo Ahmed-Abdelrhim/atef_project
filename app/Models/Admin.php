@@ -16,4 +16,11 @@ class Admin extends Authenticatable
 //    protected $fillable = ['name',];
 protected $guarded = [];
     protected $hidden = ['password'];
+
+    public function patient()
+    {
+        return $this->hasMany(User::class);
+    }
+
+
 }
