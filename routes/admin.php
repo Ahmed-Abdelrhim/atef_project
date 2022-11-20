@@ -46,8 +46,10 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::get('all-patients-to-view-admins',[AdminControlCenterController::class,'viewAllPatients'])->name('admin.view.all.patients');
 
 
-        Route::get('admin-update-patient',[AdminControlCenterController::class,'updatePatient'])->name('admin.update.patient');
-        Route::get('admin-delete-patient',[AdminControlCenterController::class,'deletePatient'])->name('admin.delete.patient');
+        Route::get('admin-update-patient/{id}',[AdminControlCenterController::class,'updatePatientForm'])->name('admin.update.patient');
+        Route::post('admin/update/patient/{id}',[AdminControlCenterController::class,'updatePatient'])->name('admin.store.update.patient');
+
+        Route::get('admin-delete-patient/{id}',[AdminControlCenterController::class,'deletePatient'])->name('admin.delete.patient');
 
     });
 
