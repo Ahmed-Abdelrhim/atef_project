@@ -44,21 +44,22 @@ class AdminControlCenterController extends Controller
 
     public function updatePatient(Request $request,$id)
     {
+        // return $id;
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
         if ($validator->fails())
             return redirect('all-patients-to-view')->withErrors($validator)->withInput();
 
         $user = User::query()->find($id);
-        if(!$user)
-            return view('errors.404');
+        return $user;
+//        if(!$user)
+//            return view('errors.404');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
 
-        $user->update([
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-        ]);
         session()->flash('success','user updated successfully');
         return redirect()->back();
     }

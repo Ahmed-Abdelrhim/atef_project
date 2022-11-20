@@ -33,10 +33,11 @@
             @enderror
 
 
+{{--            <button type="submit" class="btn btn-primary">Submit</button>--}}
+            <button type="submit" class="btn" id="submit">Register <span class="fas fa-chevron-right"></span></button>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        </div>
+    </div>
 
     </div>
 @endsection

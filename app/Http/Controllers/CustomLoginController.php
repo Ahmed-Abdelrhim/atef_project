@@ -56,7 +56,7 @@ class CustomLoginController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'avatar' => $image_name,
+            'image' => $image_name,
             'psa' => $psa,
             'age' => $request->get('age'),
             'phone_number' => $request->get('phone_number'),
