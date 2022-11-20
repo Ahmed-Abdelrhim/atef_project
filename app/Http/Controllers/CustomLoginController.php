@@ -20,8 +20,12 @@ class CustomLoginController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:4',
             'email' => 'required|email|unique:users,email',
+            'phone_number' => 'nullable|regex:/(01)[0-9](9)/',
             'password' => 'required|string|min:6|confirmed',
             'avatar' => 'nullable|mimes:jpg,jpeg,png,gif,webp|max:30000',
+            'psa' => 'nullable|mimes:jpg,jpeg,png,gif,webp|max:30000',
+            'gender' => 'nullable|between:0,1',
+            'medical_history' => 'nullable|string|min:8',
         ]);
         if ($validator->fails())
             return redirect('register/patient')->withErrors($validator)->withInput();
