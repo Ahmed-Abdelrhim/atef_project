@@ -7,7 +7,13 @@
         <div class="row">
 
             <div class="img">
-                <img src="{{asset('storage/image/pic-8.jpg')}}" alt=""/>
+                @if(Auth::check())
+                    @if(Auth::user()->image != null )
+                        <img src="{{asset('storage/patients/'.Auth::user()->image)}}" alt="not-found"/>
+                    @else
+                        <img src="{{asset('storage/patients/alt.webp') }}" alt="not-found"/>
+                    @endif
+                @endif
                 <p class="name">
                     {{ Auth::user()->name }}
                 </p>
