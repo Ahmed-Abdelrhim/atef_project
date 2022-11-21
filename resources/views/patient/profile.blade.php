@@ -72,9 +72,10 @@
                         @if(Auth::user()->psa !=null)
                             <img class="psa-img" src="{{asset('storage/psa/'.Auth::user()->psa)}}" alt="not-found"/>
                         @else
-                            No PSA Yet
+                            No Biopsy image Yet
                         @endif
                     </span>
+                    <span>Result: canser </span>
                 </h2>
                 <a href="#" class="btn"> update profile <span class="fas fa-chevron-right"></span> </a>
             </div>

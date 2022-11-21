@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="" class="col-md-4 col-form- label text-md-right">PSA</label>
+                    <label for="" class="col-md-4 col-form- label text-md-right">Biopsy image</label>
                     <div class="col-md-6">
                         <input type="file" class="box form-control @error('psa') is-invalid @enderror" name="psa"/>
                     </div>
