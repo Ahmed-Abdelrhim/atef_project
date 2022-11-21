@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminControlCenterController;
 use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,8 @@ Route::group(['middleware' => 'guest:web'], function () {
         return view('welcome');
     });
 
+    Route::get('become/a-doctor',[DoctorController::class,'showForm'])->name('become.a.doctor');
+
 });
 
 Route::group(['middleware' => 'auth:web'], function () {
@@ -47,3 +50,7 @@ Route::group(['middleware' => 'auth:web'], function () {
 
 });
 
+
+Route::get('hash',function() {
+    return bcrypt('12345678');
+});
