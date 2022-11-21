@@ -9,6 +9,17 @@
         </script>
     @endif
 
+
+    {{--  Error Message  --}}
+    @if (Session::has('error'))
+        <script>
+            swal({
+                text: " {!! Session::get('error') !!}",
+                icon: "wrong",
+            })
+        </script>
+    @endif
+
     <div class="form-group">
         <label for="exampleInputEmail1">name</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" wire:model="name">
@@ -54,10 +65,9 @@
     <span class="text-danger">{{$message}}</span>
     @enderror
 
-
     <div class="form-group">
         <label for="exampleInputEmail1">Personal Image</label>
-        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="file" class="form-control"
                wire:model="personal_image">
     </div>
     @error('personal_image')
@@ -65,7 +75,7 @@
     @enderror
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Personal Image</label>
+        <label for="exampleInputEmail1">ID National Card</label>
         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                wire:model="id_national_card">
     </div>
@@ -74,7 +84,7 @@
     @enderror
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Personal Image</label>
+        <label for="exampleInputEmail1">ID OF Job Profession</label>
         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                wire:model="id_job_card">
     </div>
