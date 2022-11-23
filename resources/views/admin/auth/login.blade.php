@@ -10,6 +10,14 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}" enctype="multipart/form-data">
                         @csrf
+                        {{--  Msg   --}}
+                        @if(Session::has('email'))
+                            <div class="row mr-2 ml-2 col-6 mx-auto">
+                                <a  class="btn btn-lg btn-block btn-danger mb-2"
+                                    id="type-error">{{Session::get('email')}}
+                                </a>
+                            </div>
+                        @endif
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

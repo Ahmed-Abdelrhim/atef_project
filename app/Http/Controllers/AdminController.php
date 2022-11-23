@@ -25,12 +25,11 @@ class AdminController extends Controller
             return redirect('admin/login')->withErrors($validator)->withInput();
 
         if (Auth::guard('admin')->attempt($this->credentials($request))) {
-
             return view('admin.dashboard');
         }
 
         $email = Admin::query()->where('email', $request->get('email'))->first();
-        // return $email;
+
         if ($email) {
             session()->flash('email', 'Password Is Incorrect!');
             return redirect()->back();
