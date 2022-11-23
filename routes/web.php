@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminControlCenterController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
@@ -30,6 +31,9 @@ Route::group(['middleware' => 'guest:web'], function () {
 
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::post('login/patient', [CustomLoginController::class, 'login'])->name('loginIn');
+
+    Route::get('admin/login',[AdminController::class,'showLoginForm'])->name('admin.login.form');
+
 
     Route::get('/', function () {
         return view('welcome');

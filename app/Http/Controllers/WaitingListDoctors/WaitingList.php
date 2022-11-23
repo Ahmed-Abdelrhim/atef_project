@@ -30,8 +30,9 @@ class WaitingList extends Controller
             })
             ->addColumn('action', function ($row) {
                 return $btn = '
-                <a href="' . Route('accept.doctor', $row->id) . '" class="btn btn-primary">Accept</a>
-                <a href="' . Route('reject.doctor', $row->id) . '" class="btn btn-danger mt-2">Reject</a>
+
+                <button class="btn btn-primary accept">Accept</button>
+                <button class="btn btn-danger mt-2 reject">Reject</button>
                 ';
             })
             ->rawColumns(['action'])
@@ -48,3 +49,6 @@ class WaitingList extends Controller
 
     }
 }
+
+// <a href="' . Route('accept.doctor', $row->id) . '" class="btn btn-primary accept">Accept</a>
+// <a href="' . Route('reject.doctor', $row->id) . '" class="btn btn-danger mt-2 reject">Reject</a>

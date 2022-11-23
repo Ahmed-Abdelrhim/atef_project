@@ -63,6 +63,13 @@
 
                 ],
             });
+
+            $('.accept').on('click',function() {
+                console.log('accept pressed');
+                alert('accept pressed')
+            });
         });
+
+
     </script>
 @endpush

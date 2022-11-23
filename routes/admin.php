@@ -30,6 +30,8 @@ Route::get('/', function () {
 Route::group(['middleware' => 'guest:admin'], function () {
     Route::get('admin/login',[AdminController::class,'showLoginForm'])->name('admin.login.form');
     Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
+    Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
+    Route::get('register', [CustomLoginController::class, 'showRegisterForm'])->name('register');
 
 });
 

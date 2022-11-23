@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Gate::define('access-to-view-doctors',function ($user){
-            if ($user->role == 2)
+            if ($user->is_doctor == 2)
                 return true;
             return false;
         } );
