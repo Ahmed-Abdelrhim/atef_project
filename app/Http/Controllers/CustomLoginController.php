@@ -36,8 +36,6 @@ class CustomLoginController extends Controller
         if ($validator->fails())
             return redirect('register')->withErrors($validator)->withInput();
 
-        // return $request;
-
         $image_name = null;
         if ($request->has('avatar')) {
             $image_name = time() . '.' . $request->file('avatar')->getClientOriginalExtension();
@@ -50,21 +48,26 @@ class CustomLoginController extends Controller
             $request->file('psa')->storeAs('psa', $psa, 'public');
         }
 
-        // return $request;
-        DB::beginTransaction();
-        User::query()->create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-            'image' => $image_name,
-            'psa' => $psa,
-            'age' => $request->get('age'),
-            'phone_number' => $request->get('phone_number'),
-            'gender' => $request->get('gender'),
-            'medical_history' => $request->get('medical_history'),
-            'doctor_id' => $request->get('doctor_id'),
-        ]);
+        try {
+            DB::beginTransaction();
+            User::query()->create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'image' => $image_name,
+                'psa' => $psa,
+                'age' => $request->get('age'),
+                'phone_number' => $request->get('phone_number'),
+                'gender' => $request->get('gender'),
+                'medical_history' => $request->get('medical_history'),
+                'doctor_id' => $request->get('doctor_id'),
+            ]);
+        } catch (\Exception $e) {
+            session()->flash('error','something went wrong');
+            return redirect()->back();
+        }
         DB::commit();
+
         return redirect()->route('login');
     }
 

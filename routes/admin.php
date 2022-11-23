@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminControlCenterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\WaitingListDoctors\WaitingList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,6 @@ Route::group(['middleware' => 'guest:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:admin'],function() {
-
     Route::post('admin-logout',[AdminController::class,'logout'])->name('admin.logout');
     Route::group(['prefix' => 'admin'] , function() {
         Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
@@ -50,6 +50,10 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::post('admin/update/patient/{id}',[AdminControlCenterController::class,'updatePatient'])->name('admin.store.update.patient');
 
         Route::get('admin-delete-patient/{id}',[AdminControlCenterController::class,'deletePatient'])->name('admin.delete.patient');
+        Route::get('waiting-list-of-doctors',[WaitingList::class,'viewWaitingListDoctors'])->name('viewWaitingListDoctors');
+        Route::get('waiting/list/of/doctors',[WaitingList::class,'dataTables'])->name('get.waiting.doctors.to.admin');
+        Route::get('accept/doctor',[WaitingList::class,'acceptDoctor'])->name('accept.doctor');
+        Route::get('reject/doctor',[WaitingList::class,'rejectDoctor'])->name('reject.doctor');
 
     });
 

@@ -210,7 +210,8 @@
     <span class="door left"></span>
     <span class="door right"></span>
 </nav>
-<h1>Not Authorized To View This Page</h1>
+{{--<h1>Not Authorized To View This Page</h1>--}}
+<h1>You are not authorized to perform such an action</h1>
 <p>Error 403</p>
 
 

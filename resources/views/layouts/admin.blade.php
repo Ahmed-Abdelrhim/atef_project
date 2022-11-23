@@ -96,6 +96,10 @@
                             <a class="nav-link" href="{{route('all.patients')}}">all patient</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('viewWaitingListDoctors')}}">Waiting Doctors </a>
+                        </li>
+
 
 
 

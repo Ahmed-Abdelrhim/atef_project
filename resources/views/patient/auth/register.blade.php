@@ -13,6 +13,18 @@
             <h3>stay safe, stay healthy</h3>
             <form method="POST" action="{{ route('register.submit') }}" enctype="multipart/form-data">
                 @csrf
+                {{--  Success Message  --}}
+                @if (Session::has('error'))
+                    <script>
+                        swal({
+                            text: " {!! Session::get('error') !!}",
+                            icon: "error",
+                        })
+                    </script>
+                @endif
+
+
+
                 <div class="row mb-3">
                     <label for="name" class="col-md-4 col-form- label text-md-right">{{ __('Name') }}</label>
 

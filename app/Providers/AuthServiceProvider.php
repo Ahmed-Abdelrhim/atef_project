@@ -24,7 +24,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Gate::define('access-to-view-doctors',function ($user){
+            if ($user->role == 2)
+                return true;
+            return false;
+        } );
 
-        //
     }
 }

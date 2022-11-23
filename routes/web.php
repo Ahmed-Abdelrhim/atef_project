@@ -29,7 +29,7 @@ Route::group(['middleware' => 'guest:web'], function () {
     Route::post('register/patient', [CustomLoginController::class, 'registerPatient'])->name('register.submit');
 
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [CustomLoginController::class, 'login'])->name('loginIn');
+    Route::post('login/patient', [CustomLoginController::class, 'login'])->name('loginIn');
 
     Route::get('/', function () {
         return view('welcome');
