@@ -18,6 +18,9 @@
             </tbody>
         </table>
 
+        <div>
+            <button class="btn btn-primary" id="acs">Send Data</button>
+        </div>
 
     </div>
 @endsection
@@ -63,13 +66,7 @@
 
                 ],
             });
-
-            $('.accept').on('click',function() {
-                console.log('accept pressed');
-                alert('accept pressed')
-            });
         });
-
 
     </script>
 @endpush

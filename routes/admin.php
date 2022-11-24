@@ -54,8 +54,8 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::get('admin-delete-patient/{id}',[AdminControlCenterController::class,'deletePatient'])->name('admin.delete.patient');
         Route::get('waiting-list-of-doctors',[WaitingList::class,'viewWaitingListDoctors'])->name('viewWaitingListDoctors');
         Route::get('waiting/list/of/doctors',[WaitingList::class,'dataTables'])->name('get.waiting.doctors.to.admin');
-        Route::get('accept/doctor',[WaitingList::class,'acceptDoctor'])->name('accept.doctor');
-        Route::get('reject/doctor',[WaitingList::class,'rejectDoctor'])->name('reject.doctor');
+        Route::get('accept/doctor/{id}',[WaitingList::class,'acceptDoctor'])->name('accept.doctor');
+        Route::get('reject/doctor/{id}',[WaitingList::class,'rejectDoctor'])->name('reject.doctor');
 
     });
 

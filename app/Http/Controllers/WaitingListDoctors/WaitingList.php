@@ -31,22 +31,34 @@ class WaitingList extends Controller
             ->addColumn('action', function ($row) {
                 return $btn = '
 
-                <button class="btn btn-primary accept">Accept</button>
-                <button class="btn btn-danger mt-2 reject">Reject</button>
+                <a class="btn btn-primary" href="'.route('accept.doctor', $row->id).'">Accept</a>
+                <a class="btn btn-danger mt-2 reject" href="'.route('reject.doctor' ,$row->id).'">Reject</a>
                 ';
             })
             ->rawColumns(['action'])
             ->make(true);
     }
 
-    public function acceptDoctor()
+    public function acceptDoctor($doctor_id)
     {
+        if (!Gate::allows('access-to-view-doctors'))
+            return view('errors.404');
 
+            $doctor = Doctor::query()->find($doctor_id);
+        if (!$doctor)
+            return view('errors.404');
+
+        return $doctor;
     }
 
-    public function rejectDoctor()
+    public function rejectDoctor($doctor_id)
     {
-
+        if (!Gate::allows('access-to-view-doctors'))
+            return view('errors.404');
+        $doctor = Doctor::query()->find($doctor_id);
+        if (!$doctor)
+            return view('errors.404');
+        return $doctor;
     }
 }
 
