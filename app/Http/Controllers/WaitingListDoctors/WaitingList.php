@@ -3,15 +3,22 @@
 namespace App\Http\Controllers\WaitingListDoctors;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\BlogPost;
 use App\Models\Doctor;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Yajra\DataTables\Facades\DataTables;
 
 class WaitingList extends Controller
 {
-    public function viewWaitingListDoctors()
+    public function viewWaitingListDoctors(): View
     {
         if (!Gate::allows('access-to-view-doctors'))
             return view('errors.403');
@@ -39,7 +46,7 @@ class WaitingList extends Controller
             ->make(true);
     }
 
-    public function acceptDoctor($doctor_id)
+    public function acceptDoctor($doctor_id): Model|View|Collection|Factory|Builder|Application|array
     {
         if (!Gate::allows('access-to-view-doctors'))
             return view('errors.404');
@@ -48,10 +55,24 @@ class WaitingList extends Controller
         if (!$doctor)
             return view('errors.404');
 
+        Admin::query()->create([
+            'name' => $doctor->name,
+            'email' => $doctor->email,
+            'password' => $doctor->password,
+            'is_doctor' => 1,
+            'phone_number' => $doctor->phone_number,
+            'address' => $doctor->address,
+            'image' => $doctor->image,
+            'id_national_card' => $doctor->id_national_card,
+            'id_job_card' => $doctor->id_job_card,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         return $doctor;
     }
 
-    public function rejectDoctor($doctor_id)
+    public function rejectDoctor($doctor_id): Model|View|Collection|Factory|Builder|Application|array
     {
         if (!Gate::allows('access-to-view-doctors'))
             return view('errors.404');

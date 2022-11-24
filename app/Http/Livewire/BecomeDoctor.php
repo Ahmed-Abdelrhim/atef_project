@@ -73,7 +73,7 @@ class BecomeDoctor extends Component
     public function imageFile($file): string
     {
         $name = str::random(4) . time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('doctor_files', $name, 'public');
+        $file->storeAs('doctor_files/'.$this->email, $name, 'public');
         return $name;
     }
 

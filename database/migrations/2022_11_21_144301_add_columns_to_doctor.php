@@ -19,7 +19,7 @@ class AddColumnsToDoctor extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('phone_number');
-            $table->string('address')->nullable();
+            $table->string('address');
             $table->string('image');
             $table->string('id_national_card');
             $table->string('id_job_card');
