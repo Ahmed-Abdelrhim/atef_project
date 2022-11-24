@@ -59,3 +59,5 @@ Route::group(['middleware' => 'auth:web'], function () {
 Route::get('hash',function() {
     return bcrypt('12345678');
 });
+// composer require yajra/laravel-datatables-buttons
+// \public\vendor\datatables\buttons.server-side.js

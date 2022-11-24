@@ -20,10 +20,6 @@ class Authenticate extends Middleware
                 return route('admin.login.form');
             if (Request::is('login'))
                 return route('login');
-//            if(Request::is('/admin*'))
-//                return route('admin.login.form');
-//            if (Request::is('/login'))
-//                return route('login');
             return route('login');
         }
         return route('login');

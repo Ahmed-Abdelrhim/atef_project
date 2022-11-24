@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\WaitingListDoctors;
 
+use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\BlogPost;
 use App\Models\Doctor;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\Html\Button;
+
 
 class WaitingList extends Controller
 {
@@ -42,8 +44,8 @@ class WaitingList extends Controller
             ->addColumn('action', function ($row) {
                 return $btn = '
 
-                <a class="btn btn-primary" href="' . route('accept.doctor', $row->id) . '">Accept</a>
-                <a class="btn btn-danger mt-2 reject" href="' . route('reject.doctor', $row->id) . '">Reject</a>
+                <a class="btn btn-primary name" href="javascript:console.log(`asd`)">Accept</a>
+                <a class="btn btn-danger mt-2 reject" href="javascript:alert(`reject`)">Reject</a>
                 ';
             })
             ->rawColumns(['action'])
@@ -98,17 +100,24 @@ class WaitingList extends Controller
         return redirect()->back();
     }
 
-    public function randomBreakFast(): int|array|string
+    public function randomBreakFast(UsersDataTable $dataTable)
     {
-        $names = ['Mahmoud', 'Ahmed', 'Karam', 'Adham','Aya','Rahma'];
-        $rand = array_rand($names);
-        if ($rand == 2)
-            $rand = array_rand($names);
+        return $dataTable->render('users');
 
-        return 'سعيد الحظ '.$names[$rand];
+//        $names = ['Mahmoud', 'Ahmed', 'Karam', 'Adham','Aya','Rahma'];
+//        $rand = array_rand($names);
+//        if ($rand == 2)
+//            $rand = array_rand($names);
+//
+//        return 'سعيد الحظ '.$names[$rand];
     }
 
 }
 
 // <a href="' . Route('accept.doctor', $row->id) . '" class="btn btn-primary accept">Accept</a>
 // <a href="' . Route('reject.doctor', $row->id) . '" class="btn btn-danger mt-2 reject">Reject</a>
+
+
+
+//                <a class="btn btn-primary" href="' . route('accept.doctor', $row->id) . '">Accept</a>
+//                <a class="btn btn-danger mt-2 reject" href="' . route('reject.doctor', $row->id) . '">Reject</a>

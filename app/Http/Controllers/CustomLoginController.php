@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class CustomLoginController extends Controller
@@ -53,7 +54,8 @@ class CustomLoginController extends Controller
             User::query()->create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
-                'password' => bcrypt($request->input('password')),
+                'password' => Hash::make($request->input('password')),
+//                'password' => bcrypt($request->input('password')),
                 'image' => $image_name,
                 'psa' => $psa,
                 'age' => $request->get('age'),
