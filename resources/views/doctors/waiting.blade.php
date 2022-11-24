@@ -1,6 +1,24 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
+        {{--  Error Message  --}}
+        @if (Session::has('error'))
+            <script>
+                swal({
+                    text: " {!! Session::get('error') !!}",
+                    icon: "error",
+                })
+            </script>
+        @endif
+        {{--  Success Message  --}}
+        @if (Session::has('success'))
+            <script>
+                swal({
+                    text: " {!! Session::get('success') !!}",
+                    icon: "success",
+                })
+            </script>
+        @endif
         {{--  <h3 class="h3 mx-auto"></h3>--}}
         <table class="table table-dark" id="doctors">
             <thead>
@@ -27,7 +45,7 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             console.log('ahmed');
             $('#doctors').DataTable({
                 processing: true,
@@ -38,30 +56,30 @@
                 order: [
                     [0, 'desc']
                 ],
-                ajax : "{{Route('get.waiting.doctors.to.admin')}}",
+                ajax: "{{Route('get.waiting.doctors.to.admin')}}",
                 columns: [{
-                    data : 'name',
-                    name : 'name',
-                },{
-                    data : 'email',
-                    name : 'email',
+                    data: 'name',
+                    name: 'name',
+                }, {
+                    data: 'email',
+                    name: 'email',
                 },
                     {
-                    data : 'phone_number',
-                    name : 'phone_number',
-                },{
-                    data : 'image',
-                    name : 'image',
-                },
+                        data: 'phone_number',
+                        name: 'phone_number',
+                    }, {
+                        data: 'image',
+                        name: 'image',
+                    },
                     {
-                        data : 'id_national_card',
-                        name : 'id_national_card',
-                    },{
-                        data : 'id_job_card',
-                        name : 'id_job_card',
-                    },{
-                        data : 'action',
-                        name : 'action',
+                        data: 'id_national_card',
+                        name: 'id_national_card',
+                    }, {
+                        data: 'id_job_card',
+                        name: 'id_job_card',
+                    }, {
+                        data: 'action',
+                        name: 'action',
                     }
 
                 ],

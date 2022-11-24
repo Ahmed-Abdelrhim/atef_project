@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth:web'], function () {
 
     Route::get('patient-profile', [PatientController::class, 'patientProfileForm'])->name('patient.profile');
 
+
 });
 
 
