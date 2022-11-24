@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Button;
-
-
 class WaitingList extends Controller
 {
     public function viewWaitingListDoctors(): View
@@ -43,9 +41,8 @@ class WaitingList extends Controller
             })
             ->addColumn('action', function ($row) {
                 return $btn = '
-
-                <a class="btn btn-primary name" href="javascript:console.log(`asd`)">Accept</a>
-                <a class="btn btn-danger mt-2 reject" href="javascript:alert(`reject`)">Reject</a>
+                <a class="btn btn-primary" href="' . route('accept.doctor', $row->id) . '">Accept</a>
+                <a class="btn btn-danger mt-2 reject" href="' . route('reject.doctor', $row->id) . '">Reject</a>
                 ';
             })
             ->rawColumns(['action'])
@@ -82,9 +79,8 @@ class WaitingList extends Controller
             return redirect()->back();
         }
         DB::commit();
-        session()->flash('success', 'Doctor Was Added Successfully');
+        session()->flash('success', 'Doctor Was Accepted Successfully');
         return redirect()->back();
-
     }
 
     public function rejectDoctor($doctor_id): Model|View|Collection|Factory|Builder|Application|array|RedirectResponse
@@ -121,3 +117,7 @@ class WaitingList extends Controller
 
 //                <a class="btn btn-primary" href="' . route('accept.doctor', $row->id) . '">Accept</a>
 //                <a class="btn btn-danger mt-2 reject" href="' . route('reject.doctor', $row->id) . '">Reject</a>
+
+
+//                <a class="btn btn-primary name" href="javascript:console.log(`asd`)">Accept</a>
+//                <a class="btn btn-danger mt-2 reject" href="javascript:alert(`reject`)">Reject</a>
