@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminControlCenterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\Play\ProblemsController;
 use App\Http\Controllers\WaitingListDoctors\WaitingList;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,9 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::get('accept/doctor/{id}',[WaitingList::class,'acceptDoctor'])->name('accept.doctor');
         Route::get('reject/doctor/{id}',[WaitingList::class,'rejectDoctor'])->name('reject.doctor');
         Route::get('random',[WaitingList::class,'randomBreakFast']);
+        Route::get('two-sums/{num}',[ProblemsController::class,'twoSums']);
+
+
 
     });
 
