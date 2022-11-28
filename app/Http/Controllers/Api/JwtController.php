@@ -30,14 +30,15 @@ class JwtController extends Controller
             ], 401);
         }
         $user = Auth::user();
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
+        return $this->respondWithToken($token);
+//        return response()->json([
+//            'status' => 'success',
+//            'user' => $user,
+//            'authorisation' => [
+//                'token' => $token,
+//                'type' => 'bearer',
+//            ]
+//        ]);
     }
 
     public function register(Request $request)
@@ -82,6 +83,32 @@ class JwtController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
+        ]);
+    }
+
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token): \Illuminate\Http\JsonResponse
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            // 'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
 }
