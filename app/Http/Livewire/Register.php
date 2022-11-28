@@ -64,8 +64,6 @@ class Register extends Component
             $psa =  Str::random(4) . time() . '.' .$this->psa->getClientOriginalExtension();
             $this->psa->storeAs('psa', $psa, 'public');
         }
-
-
         try {
             DB::beginTransaction();
             User::query()->create([
@@ -87,12 +85,5 @@ class Register extends Component
         DB::commit();
 
         return redirect()->route('login');
-    }
-
-    public function imageFile($file): string
-    {
-        $name = str::random(4) . time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('doctor_files/'.$this->email, $name, 'public');
-        return $name;
     }
 }
