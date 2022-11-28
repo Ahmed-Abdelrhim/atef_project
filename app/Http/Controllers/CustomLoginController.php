@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomLoginController extends Controller
 {
+    public function homeView(): View
+    {
+        return view('welcome');
+    }
+
     public function showRegisterForm()
     {
         $doctors = Admin::query()->where('is_doctor' , '=',1)->get();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Play;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProblemsController extends Controller
 {
@@ -22,5 +23,12 @@ class ProblemsController extends Controller
             }
         }
         return $value;
+    }
+
+    public function checkUser()
+    {
+        if (Auth::check() )
+            return 'true';
+        return 'false';
     }
 }

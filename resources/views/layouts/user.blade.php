@@ -80,7 +80,8 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
-                    @auth
+{{--                    @auth('web')--}}
+                    @if(Auth::check())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                aria-expanded="false">
@@ -93,6 +94,7 @@
 
                                 <a class="dropdown-item" href="#" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
+
                                     Logout
                                 </a>
 
@@ -102,7 +104,8 @@
 
                             </div>
                         </li>
-                    @endauth
+                    @endif
+{{--                    @endauth--}}
 
                 </ul>
 

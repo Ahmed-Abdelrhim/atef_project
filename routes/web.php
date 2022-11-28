@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Play\ProblemsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,5 +60,6 @@ Route::group(['middleware' => 'auth:web'], function () {
 Route::get('hash',function() {
     return bcrypt('12345678');
 });
+Route::get('check',[ProblemsController::class,'checkUser']);
 // composer require yajra/laravel-datatables-buttons
 // \public\vendor\datatables\buttons.server-side.js
