@@ -13,17 +13,17 @@ class Register extends Component
 {
     use WithFileUploads;
 
-    public string $name;
-    public string $password;
-    public string $email;
-    public string $avatar;
-    public string $psa;
-    public string $phone_number;
-    public string $gender;
-    public string $age;
-    public string $medical_history;
-    public string $doctor_id;
-    public string $password_confirmation;
+    public $name;
+    public $password;
+    public $email;
+    public $avatar;
+    public $psa;
+    public $phone_number;
+    public $gender;
+    public $age;
+    public $medical_history;
+    public $doctor_id;
+    public $password_confirmation;
     public $doctors;
 
     public function rules()

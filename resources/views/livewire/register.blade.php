@@ -4,7 +4,7 @@
 
         <div class="col-md-6">
             <input id="name" type="text" class="box form-control @error('name') is-invalid @enderror"
-                   name="name" value="{{ old('name') }}" required autocomplete="name" wire:model="name">
+                   name="name"  required wire:model="name">
 
             @error('name')
             <span class="invalid-feedback" role="alert">
