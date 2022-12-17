@@ -15,7 +15,7 @@ class PatientController extends Controller
         {
             $doctor_id = Auth::user()->doctor_id;
             $doctor = Admin::query()->where('id',$doctor_id)->first();
-            return $doctor;
+            // return $doctor;
         }
 
         return view('patient.profile',['doctor' => $doctor]);
