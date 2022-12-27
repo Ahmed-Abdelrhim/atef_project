@@ -26,7 +26,7 @@ class BecomeDoctor extends Component
             'name' => 'required|string|min:8',
             'email' => 'required|email|unique:doctors,email',
             'password' => 'required|string|min:8',
-            'phone' => 'required|regex:/(01)[0-9]{9}/ |unique:doctors,phone_number',
+            'phone' => 'required|regex:/(01)[0-9]{9}/|unique:doctors,phone_number',
             'address' => 'nullable|string|min:8',
             'personal_image' => 'required|mimes:jpg,png,jpeg|max:3000',
             'id_national_card' => 'required|mimes:jpg,png,jpeg|max:3000',

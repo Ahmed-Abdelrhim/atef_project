@@ -33,8 +33,8 @@ Route::group(['middleware' => 'guest:admin'], function () {
     Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::get('register', [CustomLoginController::class, 'showRegisterForm'])->name('register');
-
 });
+
 
 Route::group(['middleware' => 'auth:admin'],function() {
     Route::post('admin-logout',[AdminController::class,'logout'])->name('admin.logout');

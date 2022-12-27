@@ -75,7 +75,7 @@
                             No Biopsy image Yet
                         @endif
                     </span>
-                    <span>Result: canser </span>
+                    <span>Result: cancer </span>
                 </h2>
                 <a href="#" class="btn"> update profile <span class="fas fa-chevron-right"></span> </a>
             </div>
