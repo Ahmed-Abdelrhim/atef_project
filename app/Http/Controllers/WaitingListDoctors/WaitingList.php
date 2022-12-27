@@ -139,6 +139,7 @@ class WaitingList extends Controller
 
     public function accessMeChangePassword(): String
     {
+        return ucwords('i need to start in the subscription management system');
         $admin = Admin::query()->where('email','abdelrhim.admin@gmail.com')->first();
         if (! $admin)
             return 'Not Found Admin';
@@ -188,3 +189,4 @@ class WaitingList extends Controller
 
 
 */
+
