@@ -33,14 +33,14 @@ Route::group(['middleware' => 'guest:web'], function () {
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::post('login/patient', [CustomLoginController::class, 'login'])->name('loginIn');
 
-    Route::get('admin/login',[AdminController::class,'showLoginForm'])->name('admin.login.form');
+    Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login.form');
 
 
     Route::get('/', function () {
         return view('welcome');
     });
 
-    Route::get('become/a-doctor',[DoctorController::class,'showForm'])->name('become.a.doctor');
+    Route::get('become/a-doctor', [DoctorController::class, 'showForm'])->name('become.a.doctor');
 
 });
 
@@ -57,10 +57,10 @@ Route::group(['middleware' => 'auth:web'], function () {
 });
 
 
-Route::get('hash',function() {
+Route::get('hash', function () {
     return bcrypt('12345678');
 });
-Route::get('check',[ProblemsController::class,'checkUser']);
+Route::get('check', [ProblemsController::class, 'checkUser']);
 
 
 
@@ -70,6 +70,9 @@ Route::get('check',[ProblemsController::class,'checkUser']);
 // public\vendor\datatables\buttons.server-side.js
 
 // Nonem said how aer you manager ?
-// i'm fine Abd El-Monem 'manager said'
+// i'm fine AbdEl-Monem 'manager said'
 
-//
+// right now I think time is passing slowly when mo sabry came wo what s
+
+// JQuery Ajax Form Submit with FormData Example
+// http://www.nicesnippets.com/blog/jquery-ajax-form-submit-with-formdata-example#at_pco=smlwn-1.0&at_si=63aadf0110af7bab&at_ab=per-2&at_pos=0&at_tot=1

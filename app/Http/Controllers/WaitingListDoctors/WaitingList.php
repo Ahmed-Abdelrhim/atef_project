@@ -190,3 +190,6 @@ class WaitingList extends Controller
 
 */
 
+//    width: 200px;
+//    aspect-ratio: auto 200 / 200;
+//    height: 200px;
