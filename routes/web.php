@@ -61,8 +61,6 @@ Route::get('hash',function() {
     return bcrypt('12345678');
 });
 Route::get('check',[ProblemsController::class,'checkUser']);
-// composer require yajra/laravel-datatables-buttons
-// public\vendor\datatables\buttons.server-side.js
 
 
 
