@@ -22,7 +22,7 @@
 
             <div class="content">
                 <h3>more information</h3>
-                <h2>phone number:
+                <h2>Phone Number:
                     <span class="">
                     @if(Auth::user()->phone_number !=null)
                             {{Auth::user()->phone_number}}
@@ -31,7 +31,7 @@
                         @endif
                 </span>
                 </h2>
-                <h2>age:
+                <h2>Age:
                     <span class="">
                         @if(Auth::user()->age !=null)
                             {{Auth::user()->age}}
@@ -40,7 +40,7 @@
                         @endif
                 </span>
                 </h2>
-                <h2>gender:
+                <h2>Gender:
                     <span class="">
                         @if(Auth::user()->gender !=null)
                             {{Auth::user()->gender ? 'Male' : 'Female'}}

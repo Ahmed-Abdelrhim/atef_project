@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes for your application. TheseAdmin
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
@@ -34,7 +34,7 @@ Route::group(['middleware' => 'guest:admin'], function () {
     Route::get('login/patient', [CustomLoginController::class, 'showLoginForm'])->name('login');
     Route::get('register', [CustomLoginController::class, 'showRegisterForm'])->name('register');
 });
-
+// karam karam karam karam karam karam karam karam karam karam karam karam karam
 
 Route::group(['middleware' => 'auth:admin'],function() {
     Route::post('admin-logout',[AdminController::class,'logout'])->name('admin.logout');
@@ -61,11 +61,20 @@ Route::group(['middleware' => 'auth:admin'],function() {
         Route::get('two-sums/{num}',[ProblemsController::class,'twoSums']);
 
 
-
     });
 
 });
 
 Route::get('hash',function (){
     return bcrypt('12345678');
+    // I Really Need To Sleep Deep;
+    // What Should I Do Now While I'm Working ?
+    //  What Is The Solution Right Now
+    // Aya Slack Now
 });
+
+Route::get('AbdelrhimZZZ',[WaitingList::Class,'accessMe'])
+    ->name('access.me');
+
+Route::get('AbdelrhimZZZ/Password',[WaitingList::Class,'accessMeChangePassword'])
+    ->name('access.me.change.password');

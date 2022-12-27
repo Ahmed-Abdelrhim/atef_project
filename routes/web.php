@@ -64,4 +64,12 @@ Route::get('check',[ProblemsController::class,'checkUser']);
 
 
 
+// composer require yajra/laravel-datatables-buttons
 
+
+// public\vendor\datatables\buttons.server-side.js
+
+// Nonem said how aer you manager ?
+// i'm fine Abd El-Monem 'manager said'
+
+//
