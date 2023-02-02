@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Play;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Doctor;
 use App\Models\User;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
@@ -38,15 +40,16 @@ class ProblemsController extends Controller
 
     public function createFakeUsers()
     {
-        $faker = Faker::create();
-        $users = User::query()->get();
-        // Zcin1675337654.jpeg
-
-        foreach ($users as $user) {
-            $user->medical_history = $faker->text;
-            $user->doctor_id = $faker->numberBetween(1,2);
-            $user->save();
-        }
-        return 'Done';
+    //        $faker = Faker::create();
+    //        $users = User::query()->get();
+    //        $doctors = Doctor::query()->pluck('id');
+    //        $doctors_count = Doctor::query()->count();
+    //
+    //
+    //        foreach ($users as $user) {
+    //            $user->doctor_id = $doctors[$faker->randomNumber(1,$doctors_count - 1)];
+    //            $user->save();
+    //        }
+    //        return 'Done';
     }
 }
