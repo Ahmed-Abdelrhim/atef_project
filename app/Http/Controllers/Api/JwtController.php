@@ -23,16 +23,16 @@ class JwtController extends Controller
             return response()->json(['status' => '400', 'msg' => 'failed to register', 'data' => $validator->errors()]);
 
         $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $user = auth()->user();
             $token = $user->createToken('authToken')->plainTextToken;
-            return response()->json(['token' => $token, 'status' => 200 , 'msg' => 'Login Success']);
+            return response()->json(['token' => $token, 'status' => 200, 'msg' => 'Login Success']);
             //            return response()->json([
             //                'status' => 'error',
             //                'message' => 'Unauthorized',
             //            ], 401);
         }
-        return response()->json(['msg' => 'Username or Password Is Incorrect!' , 'status' => 403]);
+        return response()->json(['msg' => 'Username or Password Is Incorrect!', 'status' => 403]);
 
         //        $user = Auth::user();
         //        return $this->respondWithToken($token);
@@ -74,10 +74,10 @@ class JwtController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['status' => 400 , 'msg' => 'Something went wrong while registration , ty again']);
+            return response()->json(['status' => 400, 'msg' => 'Something went wrong while registration , ty again']);
         }
 
-        return response()->json(['status' => 200 , 'msg' => 'User Successfully Created , now you can login']);
+        return response()->json(['status' => 200, 'msg' => 'User Successfully Created , now you can login']);
 
         // $token = Auth::login($user);
         //        return response()->json([
@@ -105,32 +105,44 @@ class JwtController extends Controller
     public function getPsa($user_id)
     {
         if (!$user_id || !is_numeric($user_id)) {
-            return response()->json(['msg' => 'Send a valid user id' , 'status' => 400 ]);
+            return response()->json(['msg' => 'Send a valid user id', 'status' => 400]);
         }
         $user = User::query()->find($user_id);
         if (!$user) {
-            return response()->json(['msg' => 'User with id '. $user_id . ' not found' , 'status' => 400 ]);
+            return response()->json(['msg' => 'User with id ' . $user_id . ' not found', 'status' => 400]);
         }
 
-        return response()->json(['data' => $user , 'status' => 200 , 'msg' => 'Success']);
+        return response()->json(['data' => $user, 'status' => 200, 'msg' => 'Success']);
 
     }
 
-    public function addPsaResult($result , $user_id)
+    public function addPsaResult(Request $request)
     {
-        if (!is_numeric($result) || !$result || !is_numeric($user_id) || !$user_id) {
-            return response()->json(['msg' => 'Result should be an real integer and also user id' , 'status' => 400 ]);
+        $validator = Validator::make($request->all(), [
+            'psa_result' => 'required|numeric|between:0,5',
+            'user_id' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => $validator->errors(), 'status' => 400]);
+        }
+
+        $user_id = $request->user_id;
+        $psa_result = $request->psa_result;
+
+        if ($user_id <= 0) {
+            return response()->json(['msg' => 'User ID should be valid integer', 'status' => 400]);
         }
 
         $user = User::query()->find($user_id);
         if (!$user) {
-            return response()->json(['msg' => 'User with id '. $user_id . ' not found' , 'status' => 400 ]);
+            return response()->json(['msg' => 'User with id ' . $user_id . ' not found', 'status' => 400]);
         }
 
-        $user->psa_result = $result;
+        $user->psa_result = $psa_result;
         $user->save();
 
-        return response()->json(['msg' => 'Success' , 'status' => 200 ]);
+        return response()->json(['msg' => 'Psa result Stored Successfully' , 'status' => 200 ]);
     }
 
 
@@ -147,7 +159,7 @@ class JwtController extends Controller
     /**
      * Get the token array structure.
      *
-     * @param  string $token
+     * @param string $token
      *
      * @return \Illuminate\Http\JsonResponse
      */
