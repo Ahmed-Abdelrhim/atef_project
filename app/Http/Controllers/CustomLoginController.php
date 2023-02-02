@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class CustomLoginController extends Controller
 
     public function showRegisterForm()
     {
-        $doctors = Admin::query()->where('is_doctor' , '=',1)->get();
+        // $doctors = Admin::query()->where('is_doctor' , '=',1)->get();
+        $doctors = Doctor::query()->get();
         return view('patient.auth.register',['doctors' => $doctors]);
     }
 
