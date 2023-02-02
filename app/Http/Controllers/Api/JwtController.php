@@ -7,6 +7,7 @@ use App\Models\User;
 use http\Encoding\Stream\Enbrotli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class JwtController extends Controller
@@ -22,23 +23,29 @@ class JwtController extends Controller
             return response()->json(['status' => '400', 'msg' => 'failed to register', 'data' => $validator->errors()]);
 
         $credentials = $request->only('email', 'password');
-        $token = Auth::attempt($credentials);
-        if (!$token) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized',
-            ], 401);
+        if(Auth::attempt($credentials)) {
+            $user = auth()->user();
+            $token = $user->createToken('authToken')->plainTextToken;
+            return response()->json(['token' => $token, 'status' => 200 , 'msg' => 'Login Success']);
+            //            return response()->json([
+            //                'status' => 'error',
+            //                'message' => 'Unauthorized',
+            //            ], 401);
         }
-        $user = Auth::user();
-        return $this->respondWithToken($token);
-//        return response()->json([
-//            'status' => 'success',
-//            'user' => $user,
-//            'authorisation' => [
-//                'token' => $token,
-//                'type' => 'bearer',
-//            ]
-//        ]);
+        return response()->json(['msg' => 'Username or Password Is Incorrect!' , 'status' => 403]);
+
+        //        $user = Auth::user();
+        //        return $this->respondWithToken($token);
+
+
+        //        return response()->json([
+        //            'status' => 'success',
+        //            'user' => $user,
+        //            'authorisation' => [
+        //                'token' => $token,
+        //                'type' => 'bearer',
+        //            ]
+        //        ]);
     }
 
     public function register(Request $request)
@@ -54,26 +61,34 @@ class JwtController extends Controller
 
         if ($validator->fails())
             return response()->json(['status' => '400', 'msg' => 'failed to register', 'data' => $validator->errors()]);
+        try {
+            DB::beginTransaction();
+            $user = User::query()->create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => bcrypt($request->get('password')),
+                'age' => $request->get('age'),
+                'gender' => $request->get('gender'),
+                'phone_number' => $request->get('phone_number'),
+            ]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['status' => 400 , 'msg' => 'Something went wrong while registration , ty again']);
+        }
 
-        $user = User::query()->create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
-            'age' => $request->get('age'),
-            'gender' => $request->get('gender'),
-            'phone_number' => $request->get('phone_number'),
-        ]);
+        return response()->json(['status' => 200 , 'msg' => 'User Successfully Created , now you can login']);
 
-        $token = Auth::login($user);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
+        // $token = Auth::login($user);
+        //        return response()->json([
+        //            'status' => 'success',
+        //            'message' => 'User created successfully',
+        //            'user' => $user,
+        //            'authorisation' => [
+        //                'token' => $token,
+        //                'type' => 'bearer',
+        //            ]
+        //        ]);
 
     }
 
