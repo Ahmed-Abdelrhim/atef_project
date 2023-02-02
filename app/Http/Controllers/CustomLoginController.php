@@ -21,9 +21,9 @@ class CustomLoginController extends Controller
 
     public function showRegisterForm()
     {
-        // $doctors = Admin::query()->where('is_doctor' , '=',1)->get();
+        // $doctors = Admin::query()->where('is_doctor', '=', 1)->get();
         $doctors = Doctor::query()->get();
-        return view('patient.auth.register',['doctors' => $doctors]);
+        return view('patient.auth.register', ['doctors' => $doctors]);
     }
 
     public function registerPatient(Request $request)
@@ -73,7 +73,7 @@ class CustomLoginController extends Controller
                 'doctor_id' => $request->get('doctor_id'),
             ]);
         } catch (\Exception $e) {
-            session()->flash('error','something went wrong');
+            session()->flash('error', 'something went wrong');
             return redirect()->back();
         }
         DB::commit();
@@ -101,14 +101,14 @@ class CustomLoginController extends Controller
         }
         //return $request;
 
-        $email = User::query()->where('email',$request->email)->first();
+        $email = User::query()->where('email', $request->email)->first();
         // return $email;
         if ($email) {
             // return 'email exists';
-            session()->flash('email','Password Is Incorrect!');
+            session()->flash('email', 'Password Is Incorrect!');
             return redirect()->back();
         }
-        session()->flash('email','Email doesnt exist sign up now!');
+        session()->flash('email', 'Email doesnt exist sign up now!');
         return redirect()->back();
 
     }

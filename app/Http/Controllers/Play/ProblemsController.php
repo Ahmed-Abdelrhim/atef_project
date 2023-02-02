@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Play;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Carbon\Carbon;
+use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProblemsController extends Controller
 {
@@ -30,5 +34,19 @@ class ProblemsController extends Controller
         if (Auth::check() )
             return 'true';
         return 'false';
+    }
+
+    public function createFakeUsers()
+    {
+        $faker = Faker::create();
+        $users = User::query()->get();
+        // Zcin1675337654.jpeg
+
+        foreach ($users as $user) {
+            $user->medical_history = $faker->text;
+            $user->doctor_id = $faker->numberBetween(1,2);
+            $user->save();
+        }
+        return 'Done';
     }
 }

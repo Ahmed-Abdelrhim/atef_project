@@ -63,3 +63,4 @@ Route::get('hash', function () {
 Route::get('check', [ProblemsController::class, 'checkUser']);
 
 
+Route::get('create/fake/user',[ProblemsController::class,'createFakeUsers']);
