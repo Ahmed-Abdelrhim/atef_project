@@ -40,6 +40,8 @@ class ProblemsController extends Controller
 
     public function createFakeUsers()
     {
+        if (auth()->check())
+            return redirect()->route('home');
     //        $faker = Faker::create();
     //        $users = User::query()->get();
     //        $doctors = Doctor::query()->pluck('id');

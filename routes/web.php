@@ -45,7 +45,7 @@ Route::group(['middleware' => 'guest:web'], function () {
 });
 
 Route::group(['middleware' => 'auth:web'], function () {
-    Route::get('home', function () {
+    Route::get('/home', function () {
         return view('patient.patient-home');
     })->name('home');
 
