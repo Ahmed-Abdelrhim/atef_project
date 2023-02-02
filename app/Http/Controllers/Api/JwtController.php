@@ -116,6 +116,23 @@ class JwtController extends Controller
 
     }
 
+    public function addPsaResult($result , $user_id)
+    {
+        if (!is_numeric($result) || !$result || !is_numeric($user_id) || !$user_id) {
+            return response()->json(['msg' => 'Result should be an real integer and also user id' , 'status' => 400 ]);
+        }
+
+        $user = User::query()->find($user_id);
+        if (!$user) {
+            return response()->json(['msg' => 'User with id '. $user_id . ' not found' , 'status' => 400 ]);
+        }
+
+        $user->psa_result = $result;
+        $user->save();
+
+        return response()->json(['msg' => 'Success' , 'status' => 200 ]);
+    }
+
 
     /**
      * Refresh a token.
