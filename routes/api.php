@@ -21,3 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login',[JwtController::class,'login']);
 Route::post('register',[JwtController::class,'register']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout',[JwtController::class,'logout']);
+    Route::get('get/psa/{id}',[JwtController::class,'getPsa']);
+});

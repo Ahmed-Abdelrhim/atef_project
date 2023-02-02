@@ -94,12 +94,28 @@ class JwtController extends Controller
 
     public function logout()
     {
+        $name = auth()->user()->name;
         Auth::logout();
         return response()->json([
-            'status' => 'success',
-            'message' => 'Successfully logged out',
+            'status' => 200,
+            'message' => 'GoodBye ' . $name . ' hope see you again with us.',
         ]);
     }
+
+    public function getPsa($user_id)
+    {
+        if (!$user_id || !is_numeric($user_id)) {
+            return response()->json(['msg' => 'Send a valid user id' , 'status' => 400 ]);
+        }
+        $user = User::query()->find($user_id);
+        if (!$user) {
+            return response()->json(['msg' => 'User with id '. $user_id . ' not found' , 'status' => 400 ]);
+        }
+
+        return response()->json(['data' => $user , 'status' => 200 , 'msg' => 'Success']);
+
+    }
+
 
     /**
      * Refresh a token.
